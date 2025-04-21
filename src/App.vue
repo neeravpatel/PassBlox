@@ -3,7 +3,11 @@ import PasswordGenerator from './components/PasswordGenerator.vue'
 </script>
 
 <template>
-  <password-generator />
+  <div class="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+    <div class="w-full max-w-lg">
+      <password-generator />
+    </div>
+  </div>
 </template>
 
 <style scoped>
