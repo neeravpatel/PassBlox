@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
 
+// Register the FontAwesomeIcon component
 const length = ref(14)
 const includeUppercase = ref(true)
 const includeLowercase = ref(true)
@@ -55,9 +58,15 @@ onMounted(() => {
       Instantly generate a secure, random password with customizable options.
     </p>
 
-    <!-- Password Display -->
-    <div class="bg-gray-100 p-4 rounded-md text-center font-mono text-lg break-all">
-      {{ password }}
+    <!-- Password Display with Generate Button -->
+    <div class="flex items-center justify-between bg-gray-100 p-4 rounded-md text-center font-mono text-lg break-all">
+      <span class="mr-4">{{ password }}</span> <!-- Added margin-right -->
+      <button
+        @click="generatePassword"
+        class="flex items-center justify-center bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition"
+      >
+        <FontAwesomeIcon :icon="faArrowsRotate" class="hover:animate-[spin_.5s_ease_1]" />
+      </button>
     </div>
 
     <!-- Controls -->
@@ -117,30 +126,16 @@ onMounted(() => {
     <!-- Buttons -->
     <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
       <button
-        @click="generatePassword"
-        class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition"
-      >
-        Generate Password
-      </button>
-      <button
         v-if="password"
         @click="copyToClipboard"
         :class="{
-          'bg-blue-800 hover:bg-blue-900': copyButtonText === 'Copy to Clipboard',
+          'bg-blue-800 hover:bg-blue-600': copyButtonText === 'Copy to Clipboard',
           'bg-green-600 hover:bg-green-700': copyButtonText === 'Copied!'
         }"
         class="w-full text-white font-semibold py-2 rounded-lg transition"
       >
         {{ copyButtonText }}
       </button>
-    </div>
-
-    <!-- Toast Notification -->
-    <div
-      v-if="showToast"
-      class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white py-2 px-4 rounded-lg shadow-lg"
-    >
-      Password copied to clipboard!
     </div>
   </div>
 </template>
