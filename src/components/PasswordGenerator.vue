@@ -1,53 +1,53 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
+import { ref, onMounted } from "vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 // Register the FontAwesomeIcon component
-const length = ref(14)
-const includeUppercase = ref(true)
-const includeLowercase = ref(true)
-const includeNumbers = ref(true)
-const includeSymbols = ref(true)
-const password = ref('')
-const copyButtonText = ref('Copy to Clipboard') // State for button text
+const length = ref(14);
+const includeUppercase = ref(true);
+const includeLowercase = ref(true);
+const includeNumbers = ref(true);
+const includeSymbols = ref(true);
+const password = ref("");
+const copyButtonText = ref("Copy to Clipboard"); // State for button text
 
 function generatePassword() {
-  const lowercase = 'abcdefghijklmnopqrstuvwxyz'
-  const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  const numbers = '0123456789'
-  const symbols = '!@#$%^&*()_+[]{}|;:,.<>?'
+  const lowercase = "abcdefghijklmnopqrstuvwxyz";
+  const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const numbers = "0123456789";
+  const symbols = "!@#$%^&*()_+[]{}|;:,.<>?";
 
-  let chars = ''
-  if (includeLowercase.value) chars += lowercase
-  if (includeUppercase.value) chars += uppercase
-  if (includeNumbers.value) chars += numbers
-  if (includeSymbols.value) chars += symbols
+  let chars = "";
+  if (includeLowercase.value) chars += lowercase;
+  if (includeUppercase.value) chars += uppercase;
+  if (includeNumbers.value) chars += numbers;
+  if (includeSymbols.value) chars += symbols;
 
-  let result = ''
+  let result = "";
   for (let i = 0; i < length.value; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length))
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
 
-  password.value = result
+  password.value = result;
 }
 
 async function copyToClipboard() {
   if (password.value) {
     try {
-      await navigator.clipboard.writeText(password.value)
-      copyButtonText.value = 'Copied!' // Change button text
-      setTimeout(() => (copyButtonText.value = 'Copy to Clipboard'), 2000) // Reset text after 2 seconds
+      await navigator.clipboard.writeText(password.value);
+      copyButtonText.value = "Copied!"; // Change button text
+      setTimeout(() => (copyButtonText.value = "Copy to Clipboard"), 2000); // Reset text after 2 seconds
     } catch (err) {
-      console.error('Failed to copy password:', err)
+      console.error("Failed to copy password:", err);
     }
   }
 }
 
 // Generate a password when the component is mounted
 onMounted(() => {
-  generatePassword()
-})
+  generatePassword();
+});
 </script>
 
 <template>
@@ -59,13 +59,19 @@ onMounted(() => {
     </p>
 
     <!-- Password Display with Generate Button -->
-    <div class="flex items-center justify-between bg-gray-100 p-4 rounded-md text-center font-mono text-lg break-all">
-      <span class="mr-4">{{ password }}</span> <!-- Added margin-right -->
+    <div
+      class="flex items-center justify-between bg-gray-100 p-4 rounded-md text-center font-mono text-lg break-all"
+    >
+      <span class="mr-4">{{ password }}</span>
+      <!-- Added margin-right -->
       <button
         @click="generatePassword"
         class="flex items-center justify-center bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition"
       >
-        <FontAwesomeIcon :icon="faArrowsRotate" class="hover:animate-[spin_.5s_ease_1]" />
+        <FontAwesomeIcon
+          :icon="faArrowsRotate"
+          class="hover:animate-[spin_.5s_ease_1]"
+        />
       </button>
     </div>
 
@@ -94,7 +100,9 @@ onMounted(() => {
             v-model="includeUppercase"
             class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
-          <span class="text-sm font-medium text-gray-700">Include Uppercase</span>
+          <span class="text-sm font-medium text-gray-700"
+            >Include Uppercase</span
+          >
         </label>
         <label class="flex items-center space-x-3">
           <input
@@ -102,7 +110,9 @@ onMounted(() => {
             v-model="includeLowercase"
             class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
-          <span class="text-sm font-medium text-gray-700">Include Lowercase</span>
+          <span class="text-sm font-medium text-gray-700"
+            >Include Lowercase</span
+          >
         </label>
         <label class="flex items-center space-x-3">
           <input
@@ -129,8 +139,9 @@ onMounted(() => {
         v-if="password"
         @click="copyToClipboard"
         :class="{
-          'bg-blue-800 hover:bg-blue-600': copyButtonText === 'Copy to Clipboard',
-          'bg-green-600 hover:bg-green-700': copyButtonText === 'Copied!'
+          'bg-blue-800 hover:bg-blue-600':
+            copyButtonText === 'Copy to Clipboard',
+          'bg-green-600 hover:bg-green-700': copyButtonText === 'Copied!',
         }"
         class="w-full text-white font-semibold py-2 rounded-lg transition"
       >
@@ -141,7 +152,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-input[type='range'] {
+input[type="range"] {
   accent-color: #2563eb; /* Tailwind's blue-600 */
 }
 
