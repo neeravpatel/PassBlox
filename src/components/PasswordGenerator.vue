@@ -52,12 +52,6 @@ onMounted(() => {
 
 <template>
   <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8 space-y-8">
-    <!-- Header -->
-    <h2 class="text-3xl font-bold text-gray-800 text-center">🔐 PassBlox</h2>
-    <p class="text-center text-gray-600">
-      Instantly generate a secure, random password with customizable options.
-    </p>
-
     <!-- Password Display with Generate Button -->
     <div
       class="flex items-center justify-between bg-gray-100 p-4 rounded-md text-center font-mono text-lg break-all"
