@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faArrowsRotate,
@@ -52,6 +52,14 @@ async function copyToClipboard() {
     }
   }
 }
+
+// Watch for changes in options and regenerate password
+watch(
+  [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols],
+  () => {
+    generatePassword();
+  }
+);
 
 // Generate a password when the component is mounted
 onMounted(() => {
