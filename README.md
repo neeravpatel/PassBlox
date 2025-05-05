@@ -1,5 +1,7 @@
 # 🔐 PassBlox
 
+**Please try it out [here](https://passblox.netlify.app/)**
+
 **PassBlox** is a clean, responsive, and modern password generator built with [Vue 3](https://vuejs.org/), [TypeScript](https://www.typescriptlang.org/), [TailwindCSS](https://tailwindcss.com/), and [Vite](https://vitejs.dev/). Generate secure passwords quickly, toggle dark/light mode, and copy results to your clipboard with ease.
 
 ![Main App](./screenshots/app.png)
