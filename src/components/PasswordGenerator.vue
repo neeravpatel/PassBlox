@@ -5,6 +5,8 @@ import {
   faArrowsRotate,
   faCopy,
   faCheck,
+  faSun,
+  faMoon
 } from "@fortawesome/free-solid-svg-icons";
 
 // Register the FontAwesomeIcon component
@@ -68,16 +70,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8 space-y-8">
+  <div class="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 space-y-8">
     <!-- Password Display with Generate Button -->
     <div
-      class="flex items-center justify-between bg-gray-100 p-4 rounded-md text-center font-mono text-lg break-all"
+      class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 p-4 rounded-md text-center font-mono text-lg break-all"
     >
-      <span class="mr-4 flex-1">{{ password }}</span>
+      <span class="mr-4 flex-1 dark:text-white">{{ password }}</span>
 
       <button
         @click="generatePassword"
-        class="mr-2 flex items-center justify-center bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-sky-700 transition"
+        class="mr-2 flex items-center justify-center bg-sky-600 text-white  font-semibold py-2 px-4 rounded-lg hover:bg-sky-700 transition"
       >
         <FontAwesomeIcon
           :icon="faArrowsRotate"
@@ -102,7 +104,7 @@ onMounted(() => {
     <div class="space-y-4">
       <!-- Password Length -->
       <div>
-        <label for="length" class="block text-sm font-medium text-gray-700">
+        <label for="length" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
           Password Length: <span class="font-mono">{{ length }}</span>
         </label>
         <input
@@ -123,7 +125,7 @@ onMounted(() => {
             v-model="includeUppercase"
             class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
-          <span class="text-sm font-medium text-gray-700"
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300"
             >Include Uppercase</span
           >
         </label>
@@ -133,7 +135,7 @@ onMounted(() => {
             v-model="includeLowercase"
             class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
-          <span class="text-sm font-medium text-gray-700"
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300"
             >Include Lowercase</span
           >
         </label>
@@ -143,7 +145,7 @@ onMounted(() => {
             v-model="includeNumbers"
             class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
-          <span class="text-sm font-medium text-gray-700">Include Numbers</span>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Include Numbers</span>
         </label>
         <label class="flex items-center space-x-3">
           <input
@@ -151,7 +153,7 @@ onMounted(() => {
             v-model="includeSymbols"
             class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
-          <span class="text-sm font-medium text-gray-700">Include Symbols</span>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Include Symbols</span>
         </label>
       </div>
     </div>

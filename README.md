@@ -12,7 +12,7 @@
 - ✅ Optional uppercase, numbers, and symbols
 - ✅ Instant password generation
 - ✅ Copy to clipboard functionality
-- 🌗 Toggleable light/dark mode (under development)
+- 🌗 Toggleable light/dark mode
 - 🚀 Instant deploy with Netlify (https://passblox.netlify.app/)
 
 ---
