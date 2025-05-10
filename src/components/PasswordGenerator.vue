@@ -4,9 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faArrowsRotate,
   faCopy,
-  faCheck,
-  faSun,
-  faMoon
+  faCheck
 } from "@fortawesome/free-solid-svg-icons";
 
 // Register the FontAwesomeIcon component
