@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faArrowsRotate,
   faCopy,
-  faCheck
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Register the FontAwesomeIcon component
@@ -65,10 +65,17 @@ watch(
 onMounted(() => {
   generatePassword();
 });
+
+defineExpose({
+  password,
+  copyIcon
+})
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 space-y-8">
+  <div
+    class="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 space-y-8"
+  >
     <!-- Password Display with Generate Button -->
     <div
       class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 p-4 rounded-md text-center font-mono text-lg break-all"
@@ -77,7 +84,7 @@ onMounted(() => {
 
       <button
         @click="generatePassword"
-        class="mr-2 flex items-center justify-center bg-sky-600 text-white  font-semibold py-2 px-4 rounded-lg hover:bg-sky-700 transition"
+        class="mr-2 flex items-center justify-center bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-sky-700 transition"
       >
         <FontAwesomeIcon
           :icon="faArrowsRotate"
@@ -93,6 +100,7 @@ onMounted(() => {
           'bg-green-600 hover:bg-green-500': copyButtonText === 'Copied!',
         }"
         class="flex items-center justify-center text-white font-semibold py-2 px-4 rounded-lg transition max-sm:hidden"
+        data-testid="copy-btn"
       >
         <FontAwesomeIcon :icon="copyIcon" class="hover:animate-pulse" />
       </button>
@@ -102,7 +110,10 @@ onMounted(() => {
     <div class="space-y-4">
       <!-- Password Length -->
       <div>
-        <label for="length" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label
+          for="length"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
           Password Length: <span class="font-mono">{{ length }}</span>
         </label>
         <input
@@ -121,6 +132,7 @@ onMounted(() => {
           <input
             type="checkbox"
             v-model="includeUppercase"
+            data-testid="uppercase-checkbox"
             class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
           <span class="text-sm font-medium text-gray-700 dark:text-gray-300"
@@ -131,6 +143,7 @@ onMounted(() => {
           <input
             type="checkbox"
             v-model="includeLowercase"
+            data-testid="lowercase-checkbox"
             class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
           <span class="text-sm font-medium text-gray-700 dark:text-gray-300"
@@ -141,17 +154,23 @@ onMounted(() => {
           <input
             type="checkbox"
             v-model="includeNumbers"
+            data-testid="numbers-checkbox"
             class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
-          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Include Numbers</span>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300"
+            >Include Numbers</span
+          >
         </label>
         <label class="flex items-center space-x-3">
           <input
             type="checkbox"
             v-model="includeSymbols"
+            data-testid="symbols-checkbox"
             class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
-          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Include Symbols</span>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300"
+            >Include Symbols</span
+          >
         </label>
       </div>
     </div>
